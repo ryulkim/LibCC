@@ -1,4 +1,4 @@
-package com.library.common.jwt;
+package com.library.jwt;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

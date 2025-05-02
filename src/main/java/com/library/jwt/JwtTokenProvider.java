@@ -1,30 +1,28 @@
-package com.library.common.jwt;
+package com.library.jwt;
 
-
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
 import java.util.Date;
 import javax.crypto.SecretKey;
-import lombok.extern.slf4j.Slf4j;
 
 
-
-@Slf4j
 public class JwtTokenProvider {
     private static final String AUTHORITIES_KEY = "auth";
     private static final String BEARER_TYPE = "Bearer";
+
     private static int REFRESH_TOKEN_EXPIRE_TIME_COOKIE;
 
+    private final long ACCESS_TOKEN_EXPIRE_TIME;
+    private final long REFRESH_TOKEN_EXPIRE_TIME;
     private final SecretKey key;
 
-    public JwtTokenProvider(String secretKey) {
+    public JwtTokenProvider(String secretKey, long accessTokenExpireTime, long refreshTokenExpireTime) {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         this.key = Keys.hmacShaKeyFor(keyBytes);
+        this.ACCESS_TOKEN_EXPIRE_TIME = accessTokenExpireTime;
+        this.REFRESH_TOKEN_EXPIRE_TIME = refreshTokenExpireTime;
     }
 
     public String extractIdFromToken(String Token) {
@@ -61,7 +59,7 @@ public class JwtTokenProvider {
 //                .build();
 //    }
 
-    public TokenInfo generateToken(String id, String role, long ACCESS_TOKEN_EXPIRE_TIME, long REFRESH_TOKEN_EXPIRE_TIME) {
+    public TokenInfo generateToken(String id, String role) {
         long now = (new Date()).getTime();
         String accessToken = Jwts.builder()
                 .subject(id)
@@ -77,7 +75,6 @@ public class JwtTokenProvider {
                 .signWith(key)
                 .compact();
 
-//        log.info("REFRESH_TOKEN_EXPIRE_TIME = {}", REFRESH_TOKEN_EXPIRE_TIME);
         return TokenInfo.builder()
                 .grantType(BEARER_TYPE)
                 .accessToken(accessToken)
@@ -93,9 +90,11 @@ public class JwtTokenProvider {
                     .build()
                     .parseSignedClaims(token);
             return true;
-        } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
-            throw new MalformedJwtException("Invalid JWT Token", e);
+        } catch (JwtException e){
+            throw new JwtException(e.getMessage());
         }
+//        catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
+//            throw new MalformedJwtException("Invalid JWT Token", e);
 //        } catch (ExpiredJwtException e) {
 //            throw new ExpiredJwtException("Expired JWT Token", e);
 //            log.info(, e);
