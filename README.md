@@ -6,10 +6,10 @@
 - 랜덤 닉네임 생성
 
 ### 라이브러리
-**com.library:jwt**
+`com.library:jwt`
 - JWT 생성/파싱
 
-**com.library:libcc**
+`com.library:libcc`
 - 공통 예외 핸들러
 - 공통 예외 코드 및 응답 처리
 - 랜덤 닉네임 생성
@@ -20,9 +20,10 @@
 - JWT 토큰 직접 생성/관리
 - Refresh 토큰은 Redis로 저장/관리
 ### 목적
-**com.library:jwt**
+`com.library:jwt`
 - gateway와 member 서버에서 jwt 토큰 생성 및 유효한지 체크를 하기 위한 목적
-**com.library:libcc**
+  
+`com.library:libcc`
 - 다른 서버들에서 예외 상태 코드와 응답 코드 및 공통 예외 핸들러를 쓰기 위한 목적
 - StatusCode interface를 구현하는 enum을 생성해 예외 코드 및 성공 코드 커스텀 가능
 
