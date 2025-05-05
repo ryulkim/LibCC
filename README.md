@@ -7,19 +7,20 @@
 
 ### 라이브러리
 **jitpack을 사용한 라이브러리 배포**  
-https://github.com/ryulkim/LibCC/releases
+- 사용법 및 기능들 보기  
+  > [릴리즈 노트](https://github.com/ryulkim/LibCC/releases)
 
-**git package로 라이브러리 배포** (구)
-`com.library:jwt` (구)
+**git package로 라이브러리 배포** (구)  
+`com.library:jwt` (구)  
 - JWT 생성/파싱
 
-`com.library:libcc` (구)
+`com.library:libcc` (구)  
 - 공통 예외 핸들러
 - 공통 예외 코드 및 응답 처리
 - 랜덤 닉네임 생성
 
 ### 목적
-`com.library:jwt` (구)
+`com.library:jwt` (구)  
 - gateway와 member 서버에서 jwt 토큰 생성 및 유효한지 체크를 하기 위한 목적
   
 `com.library:libcc` (구)
