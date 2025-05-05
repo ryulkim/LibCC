@@ -6,7 +6,7 @@
 - 랜덤 닉네임 생성
 
 ### 라이브러리
-**jitpack을 사용한 라이브러리 배포**
+**jitpack을 사용한 라이브러리 배포**  
 https://github.com/ryulkim/LibCC/releases
 
 **git package로 라이브러리 배포** (구)
