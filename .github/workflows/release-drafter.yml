@@ -1,0 +1,16 @@
+# .github/workflows/release-drafter.yml
+name: Release Drafter
+
+on:
+  push:
+    tags:
+      - '*-v*.*.*'
+
+jobs:
+  update_release_draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: release-drafter/release-drafter@v5
+        with:
+          config-name: release-drafter.yml
