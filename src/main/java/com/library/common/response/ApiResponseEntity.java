@@ -5,6 +5,8 @@ import com.library.common.code.SuccessCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.net.URI;
+
 public class ApiResponseEntity {
     public static <T> ResponseEntity<ApiResponse<T>> onSuccess(T result) {
         return ResponseEntity.ok().body(new ApiResponse<>(SuccessCode.SUCCESS.name(), SuccessCode.SUCCESS.getMessage(), result));
@@ -12,6 +14,11 @@ public class ApiResponseEntity {
 
     public static <T> ResponseEntity<ApiResponse<T>> from(StatusCode code, T result) {
         return ResponseEntity.status(code.getHttpStatus())
+                .body(new ApiResponse<>(code.getName(), code.getMessage(), result));
+    }
+
+    public static <T> ResponseEntity<ApiResponse<T>> create(StatusCode code, String url, T result) {
+        return ResponseEntity.created(URI.create(url))
                 .body(new ApiResponse<>(code.getName(), code.getMessage(), result));
     }
 
