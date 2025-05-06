@@ -13,6 +13,14 @@ java {
     }
 }
 
+publishing {
+    publications {
+        mavenJava(org.gradle.api.publish.maven.MavenPublication) {
+            from components.java
+        }
+    }
+}
+
 repositories {
     mavenCentral()
 }
