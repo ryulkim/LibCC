@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.io.IOException;
-
 import static com.library.common.code.ErrorCode.*;
 
 @Slf4j
@@ -30,18 +28,15 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 //    }
     @ExceptionHandler(GlobalException.class)
     ResponseEntity<?> globalExceptionHandler(GlobalException e){
+        log.info("{}: {}", e.getClass().getSimpleName(), e.getErrorCode().getMessage());
         return ApiResponseEntity.onFailure(e.getErrorCode());
     }
 
-    @ExceptionHandler(CustomJwtException.class)
-    ResponseEntity<?> globalExceptionHandler(CustomJwtException e){
-        return ApiResponseEntity.onFailure(e.getErrorCode());
-    }
-
-    @ExceptionHandler(IOException.class)
-    ResponseEntity<?> globalExceptionHandler(IOException e){
-        return ApiResponseEntity.onFailure(FAIL_IMAGE_UPLOAD);
-    }
+//
+//    @ExceptionHandler(IOException.class)
+//    ResponseEntity<?> globalExceptionHandler(IOException e){
+//        return ApiResponseEntity.onFailure(FAIL_IMAGE_UPLOAD);
+//    }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Object>> handleException(final Exception e){

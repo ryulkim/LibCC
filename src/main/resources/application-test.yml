@@ -1,16 +1,16 @@
-spring:
-  datasource:
-    url: jdbc:h2:mem:scc # 메모리 기반 데이터베이스
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-  h2:
-    console:
-      enabled: true
-  jpa:
-    hibernate:
-      ddl-auto: create-drop # 애플리케이션 종료 시 데이터베이스 삭제
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
+#spring:
+#  datasource:
+#    url: jdbc:h2:mem:scc # 메모리 기반 데이터베이스
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:
+#  h2:
+#    console:
+#      enabled: true
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop # 애플리케이션 종료 시 데이터베이스 삭제
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
