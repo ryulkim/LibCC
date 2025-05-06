@@ -1,14 +1,14 @@
-package com.library.common.exception;
+package com.library.lib.exception;
 
-import com.library.common.response.ApiResponse;
-import com.library.common.response.ApiResponseEntity;
+import com.library.lib.response.ApiResponse;
+import com.library.lib.response.ApiResponseEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import static com.library.common.code.ErrorCode.*;
+import static com.library.lib.code.ErrorCode.*;
 
 @Slf4j
 @RestControllerAdvice

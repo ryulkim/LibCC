@@ -1,4 +1,4 @@
-package com.library.common.util;
+package com.library.lib.util;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.util.StringUtils;

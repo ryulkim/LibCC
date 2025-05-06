@@ -1,7 +1,7 @@
-package com.library.common.response;
+package com.library.lib.response;
 
-import com.library.common.code.StatusCode;
-import com.library.common.code.SuccessCode;
+import com.library.lib.code.StatusCode;
+import com.library.lib.code.SuccessCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 

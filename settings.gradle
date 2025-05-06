@@ -1,1 +1,3 @@
 rootProject.name = 'LibCC'
+
+include 'lib', 'jwt'

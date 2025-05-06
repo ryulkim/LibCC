@@ -1,6 +1,6 @@
-package com.library.common.exception;
+package com.library.lib.exception;
 
-import com.library.common.code.StatusCode;
+import com.library.lib.code.StatusCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

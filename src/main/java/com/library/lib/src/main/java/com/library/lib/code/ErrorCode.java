@@ -1,4 +1,4 @@
-package com.library.common.code;
+package com.library.lib.code;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -54,6 +54,7 @@ public enum ErrorCode implements StatusCode {
 //
 //
     SERVER_ERROR(INTERNAL_SERVER_ERROR, "서버 에러가 발생하였습니다.")
+
     ;
 
     private final HttpStatus httpStatus;

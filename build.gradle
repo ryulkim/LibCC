@@ -1,82 +1,22 @@
 plugins {
-    id 'org.springframework.boot' version '3.4.3'
     id 'io.spring.dependency-management' version '1.1.7'
-    id 'java-library'            // ← 이거 반드시 필요
-    id 'maven-publish'
-}
-ext['spring-security.version'] = '6.4.2'
-
-group = 'com.library'
-version = '1.0.5'
-
-bootJar {
-    enabled = false
 }
 
-jar {
-    enabled = true
-}
+allprojects {
+    group = 'com.library'
+    version = '1.0.0'
 
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
-
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web:3.4.3'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
-    // redis
-//    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-//    testImplementation 'org.springframework.security:spring-security-test'
-    //swagger
-//    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.3'
-    //jwt
-//    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.12.6'
-//    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.12.6'
-//    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.12.6'
-    // Java json
-//    implementation 'com.fasterxml.jackson.core:jackson-databind'
-    // aop
-//    implementation 'org.springframework.boot:spring-boot-starter-aop'
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-            artifactId = 'libcc'
-        }
-    }
     repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/ryulkim/LibCC")
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
-            }
-        }
+        mavenCentral()
     }
 }
 
+subprojects {
+    apply plugin: 'java-library'
 
-tasks.named('test') {
-    useJUnitPlatform()
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
 }

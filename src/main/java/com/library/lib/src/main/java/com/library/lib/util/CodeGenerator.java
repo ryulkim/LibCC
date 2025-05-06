@@ -1,4 +1,4 @@
-package com.library.common.util;
+package com.library.lib.util;
 
 import java.util.Random;
 import org.springframework.stereotype.Component;
