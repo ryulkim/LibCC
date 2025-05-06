@@ -1,5 +1,3 @@
-import org.gradle.jvm.toolchain.JavaLanguageVersion
-
 plugins {
     id 'java-library'
     id 'maven-publish'
@@ -7,8 +5,7 @@ plugins {
 }
 
 group = 'com.github.ryulkim.LibCC'
-version = '1.0.6'
-
+version = '1.0.7'
 
 java {
     toolchain {
@@ -23,7 +20,6 @@ publishing {
         }
     }
 }
-
 
 repositories {
     mavenCentral()
