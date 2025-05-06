@@ -3,9 +3,6 @@ plugins {
 }
 
 allprojects {
-    group = 'com.library'
-    version = '1.0.0'
-
     repositories {
         mavenCentral()
     }
