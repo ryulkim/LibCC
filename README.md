@@ -33,8 +33,7 @@ SpringBootApplication에서 다음을 추가해주세요:
 ---
 
 
-## ✨ New Features
-
+## com.github.ryulkim.LibCC:lib:v1.1.0
 ### ✅ 공통 예외 처리
 
 #### 1. 공통 예외 핸들러 (`GlobalExceptionHandler`)
@@ -219,7 +218,32 @@ NickGenerator.generateUniqueNickname();
 
 ---
 
+## com.github.ryulkim.LibCC:jwt:v1.1.0
+### Configuration
+```java
+@Configuration
+public class JwtTokenProviderConfig {
 
+    @Bean
+    public JwtTokenProvider getJwtTokenProvider() {
+        return new JwtTokenProvider(${secret.key}, ${access-token-expiration}, ${refresh-token-expiration});
+    }
+}
+```
+
+### 사용 예제
+```java
+@RequiredArgsConstructor
+@Service
+public class AuthService {
+    private final JwtTokenProvider jwtTokenProvider;
+
+    public void test() {
+        String id = jwtTokenProvider.extractIdFromToken(refreshTokenRequest.refreshToken());
+    }
+}
+```
+---
 
 ### 라이브러리
 **jitpack을 사용한 라이브러리 배포**  
