@@ -173,6 +173,25 @@ public ResponseEntity<ApiResponse<Object>> test() {
 - 💡 결과:  
   ![custom](https://github.com/user-attachments/assets/e210ecb3-5f0e-489d-b930-76cb43eee3eb)
 
+**(4) ResponseEntity create 응답**
+- **ApiResponseEntity.class**:  
+```java
+public static <T> ResponseEntity<ApiResponse<T>> create(StatusCode code, String url, T result) {
+    return ResponseEntity.created(URI.create(url))
+            .body(new ApiResponse<>(code.getName(), code.getMessage(), result));
+}
+```
+- 사용법 예
+```java
+@GetMapping
+public ResponseEntity<ApiResponse<Object>> test() {
+    long resourceId=1L;
+
+    return ApiResponseEntity.create(ERORORO.CREATE,"/located/"+resourceId, null);
+}
+```
+
+
 ---
 
 ### 🐣 랜덤 닉네임 생성기
