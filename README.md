@@ -173,6 +173,8 @@ public ResponseEntity<ApiResponse<Object>> test() {
 - 💡 결과:  
   ![custom](https://github.com/user-attachments/assets/e210ecb3-5f0e-489d-b930-76cb43eee3eb)
 
+---
+
 **(4) ResponseEntity create 응답**
 - **ApiResponseEntity.class**:  
 ```java
